@@ -26,13 +26,13 @@ int main(){
 
     // Create two child processes and increment and decrement the value of X in them
     if(fork() == 0){
-        // First Process
+        // Process A
         while(count--){
             (*X)++;
         }
     }else{
         if(fork() == 0){
-            // Second Process
+            // Process B
             while(count--){
                 (*X)--;
             }
