@@ -11,6 +11,7 @@ average turnaround time of those processes .
 #include <stdio.h>
 #include <stdlib.h>
 
+// Process Structure
 struct process{
     int id;
     int arrivalTime;
@@ -21,15 +22,18 @@ struct process{
 };
 
 int main(){
+    // Declare and Initialize Variables
     int n = 5;
     struct process* processes = (struct process*)malloc(n*sizeof(struct process));
     int i;
 
+    // Read the process details from the user
     for(i=0; i<n; i++){
         printf("Enter Process ID, Arrival Time and Burst Time of Process %d: ", i+1);
         scanf("%d%d%d", &processes[i].id, &processes[i].arrivalTime, &processes[i].burstTime);
         processes[i].remainingTime = processes[i].burstTime;
     }
+
 
     int time = 0;
     int completed = 0;
@@ -39,15 +43,19 @@ int main(){
     int totalWaitingTime = 0;
     int totalTurnaroundTime = 0;
 
+    // Run the Round Robin Algorithm
     while(completed < n){
         flag = 0;
         for(i=0; i<n; i++){
+            // If the process has arrived and is not completed
             if(processes[i].arrivalTime <= time && processes[i].remainingTime > 0){
                 flag = 1;
+                // If the process can be completed in the current time quantum
                 if(processes[i].remainingTime > quantum){
                     time += quantum;
                     processes[i].remainingTime -= quantum;
                 }else{
+                    // If the process cannot be completed in the current time quantum
                     time += processes[i].remainingTime;
                     processes[i].remainingTime = 0;
                     processes[i].waitingTime = time - processes[i].burstTime - processes[i].arrivalTime;
@@ -58,6 +66,7 @@ int main(){
                 }
             }
         }
+        // If no process has arrived
         if(flag == 0){
             time++;
         }
