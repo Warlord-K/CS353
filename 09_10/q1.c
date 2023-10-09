@@ -31,18 +31,21 @@ int main(){
     int* X;
     int count  = 100000;
     int flag;
-    int pid1, pid2;
     
     shmID = shmget(IPC_PRIVATE, sizeof(int), 0666|IPC_CREAT);
     X = (int*)shmat(shmID, NULL, 0);
-    *X = 0;
 
-    if((pid1 = fork()) == 0){
+    int n;
+    printf("Enter value of X: ");
+    scanf("%d", &n);
+    *X = n;
+
+    if(fork() == 0){
         while(count--){
             (*X)++;
         }
     }else{
-        if((pid2 = fork()) == 0){
+        if(fork() == 0){
             while(count--){
                 (*X)--;
             }
