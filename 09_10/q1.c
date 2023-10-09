@@ -38,6 +38,7 @@ int main(){
             }
         }else{
             // Parent Process
+            // Wait for both the child processes to finish
             wait(&flag);
             wait(&flag);
             printf("Final Value of X: %d\n", *X);
