@@ -57,7 +57,7 @@ void calculateAndDisplayAverageTimes(int processes[], int n, int burst_time[], i
         total_waiting_time += waiting_time[i];
         total_turnaround_time += turnaround_time[i];
 
-        cout << processes[i] << "\t\t" << burst_time[i] << "\t\t" << waiting_time[i] << "\t\t" << turnaround_time[i] << endl;
+        cout << processes[i] << "\t" << burst_time[i] << "\t\t" << waiting_time[i] << "\t\t" << turnaround_time[i] << endl;
     }
 
     cout << "Average Waiting Time = " << (float)total_waiting_time / n << endl;
