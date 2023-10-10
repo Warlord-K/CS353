@@ -76,6 +76,19 @@ int main(){
     for(i=0; i<n; i++){
         printf("%d\t\t%d\t\t%d\t\t%d\t\t%d\n", processes[i].id, processes[i].arrivalTime, processes[i].burstTime, processes[i].waitingTime, processes[i].turnaroundTime);
     }
+
+    //Gantt Chart
+    printf("\nGantt Chart\n");
+    for(i=0; i<n; i++){
+        printf("P%d\t", processes[i].id);
+    }
+    printf("\n");
+    for(i=0; i<n; i++){
+        printf("%d\t", processes[i].arrivalTime);
+    }
+    printf("%d\n", time);
+    
+
     printf("Average Waiting Time: %f\n", (float)totalWaitingTime/n);
     printf("Average Turnaround Time: %f\n", (float)totalTurnaroundTime/n);
     
