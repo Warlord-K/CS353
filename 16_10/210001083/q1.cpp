@@ -47,6 +47,12 @@ int LRU(int frames, int pages[], int n){
             indexes[pages[i]] = i;
         }
     }
+    cout << "Pages Left: ";
+    for(auto it=s.begin(); it!=s.end(); it++){
+        cout << *it << " ";
+    }
+    cout << endl;
+    cout << "Page Faults: "<< page_faults << endl;
     return page_faults;
 }
 
@@ -63,6 +69,6 @@ int main(){
     for(int i = 0; i < n; i++){
         cin >> pages[i];
     }
-    cout << "Page Faults: "<< LRU(f, pages, n) << endl;
+    LRU(f, pages, n);
     return 0;
 }
