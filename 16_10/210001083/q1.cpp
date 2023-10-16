@@ -53,7 +53,16 @@ int LRU(int frames, int pages[], int n){
 
 
 int main(){
-    int pages[] = {1,2,3,4,2,1,5,3};
-    cout << LRU(3, pages, 8) << endl;
+    int n, f;
+    cout << "Enter Number of Frames: \n";
+    cin >> f;
+    cout << "Enter Number of Pages: \n";
+    cin >> n;
+    int pages[n];
+    cout << "Enter Page Reference Numbers space seperated: \n";
+    for(int i = 0; i < n; i++){
+        cin >> pages[i];
+    }
+    cout << "Page Faults: "<< LRU(f, pages, n) << endl;
     return 0;
 }
