@@ -7,7 +7,6 @@ int FIF(int frames, int pages[], int n){
     int page_faults = 0;
     // s: Set Representing the Elements in the Frame
     unordered_set<int> s;
-    // indexes: Map storing the last time a page was used
 
     // Start Iterating over the pages
     for(int i=0; i<n; i++){
