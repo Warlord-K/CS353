@@ -1,28 +1,24 @@
 #include<stdio.h>
 #include<sys/ipc.h>
 #include<sys/msg.h>
-#include<bits/stdc++.h>
-using namespace std;
 #define MAX 100
 
 struct mesg_buffer {
 	long n;
 } message;
 
-
+int fib(int n){
+	if(n < 3) return n;
+	return fib(n-1) + fib(n-2);
+}
 int main(){
-
 	key_t key;
 	int msgid;
-	
 	key = ftok("progfile", 65);
-	
-	msgid = msgget(key, 0666|IPC_CREAT);
-	message.mesg_type = 1;
-	cin >> message.n;
-	msgsnd(msgid, &message, sizeof(message), 0);
+	msgid = msgget(key, 0666|IPC_CREAT);	
 	msgrcv(msgid, &message, sizeof(message), 0);
-	cout << message.n << endl;
+	message.n = fib(message.n);
+	msgsnd(msgid, &message, sizeof(message), 0);
 	msgctl(msgid, IPC_RMID, NULL);
 	return 0;
 }
