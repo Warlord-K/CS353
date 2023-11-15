@@ -1,22 +1,21 @@
-#include<stdio.h>
+include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
 int main(int argc, char *argv[]){
-
 	if(argc == 1){
 		printf("Please Supply more arguments\n");
 		exit(0);
 	}
-        char arg1 = ' ';
-	char arg = '.';
-	char file[] = "/snap/bin/code";
-	char *ar[2] = {file ,&arg};
+	char *ar[1] = {NULL};
 	if(*argv[1] == '0'){
-		execvp("/usr/bin/firefox", NULL);
+		printf("Firefox\n");
+		execvp("/usr/bin/firefox", ar);
+		printf("Firefox\n");		
 
 	}else if(*argv[1] == '1'){
-		execvp("/snap/bin/code", ar);
+		printf("P2");
 	}
+
 	return 0;
 
 }
